@@ -1,0 +1,47 @@
+<!DOCTYPE HTML>
+<html lang="de">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<meta name="viewport" content="width=device-width">
+	<title>Demo: Web Speech API: Synthesis</title>
+	<style>
+		input[type=text] {
+			box-sizing: border-box;
+			display: block;
+			font-size: 200%;
+			margin: 0;
+			width: 100%;
+		}
+
+		label, button {
+			font-size: 150%;
+		}
+
+		fieldset {
+			border: 1px solid gray;
+			border-width: 1px 0 0;
+		}
+	</style>
+
+</head>
+<body>
+
+<fieldset>
+	<input type="text" id="sayit" value="Hallo ich heiße Jule">
+</fieldset>
+<fieldset>
+	<button onclick="sayIt(document.getElementById('sayit').value);">sprechen</button>
+</fieldset>
+<!-- Scripts -->
+<script>
+	function sayIt(text) {
+		var foo = new SpeechSynthesisUtterance(text);
+		foo.lang = 'de-DE';//langRadio;
+		foo.pitch = 1.3;
+		foo.rate = 1;
+		window.speechSynthesis.speak(foo);
+	}
+</script>
+</body>
+</html>
