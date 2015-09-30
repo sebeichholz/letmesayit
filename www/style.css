@@ -1,0 +1,25 @@
+body {
+    background-color: #dbdbdb;
+    padding: 1cm;
+    font-size: 400%;
+}
+
+input {
+    white-space: nowrap;
+    display: inline;
+}
+
+#sayThis {
+    box-sizing: border-box;
+    width: 80%;
+    padding: 5px;
+    margin-bottom: 5px;
+}
+
+#buttonSayIt {
+    margin-right: 2cm;
+    margin-left: 1cm;
+}
+
+
+
