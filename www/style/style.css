@@ -1,44 +1,88 @@
-body {
-    background-color: #dbdbdb;
-    padding: 1cm;
-}
 
-textarea {
-    white-space: nowrap;
-    display: inline;
-    font-size: 400%;
-}
-
-#sayThis {
-    box-sizing: border-box;
-    width: 90%;
-    padding: 10px;
-    margin-bottom: 5px;
-}
-
-#buttonSayIt {
-    margin-right: 2cm;
-    margin-left: 1cm;
-}
-
-#divSettings {
-    position: fixed;
-    bottom: 0;
-    right: 0;
-    opacity: 0.4;
+a {
+    color: #101010;
 }
 
 
-#footer {
-    position: fixed;
-    bottom: 0;
-    right: 40%;
-    opacity: 0.7;
+@media only screen
+and (max-device-width : 320px) {
+    body {
+        background-color: #bbbbbb;
+        padding: 2mm;
+    }
+    textarea {
+        white-space: nowrap;
+        display: inline;
+        font-size: 150%;
+    }
+    #sayThis {
+        box-sizing: border-box;
+        width: 98%;
+        padding: 5px;
+        margin-bottom: 3px;
+    }
+
+    #buttonSayIt {
+        margin-right: 2mm;
+    }
+
+    #divSettings {
+        position: fixed;
+        bottom: 0;
+        right: 0;
+        opacity: 0.4;
+    }
+
+    #divButtons {
+
+    }
+
+    #divButtons button {
+        font-size: 80%;
+        padding: 8px;
+    }
+
+    #footer {
+        position: fixed;
+        bottom: 0;
+        left: 5%;
+        opacity: 0.7;
+    }
+
+    #footer a {
+        margin-right: 2mm;
+    }
 }
 
-#footer a {
-    margin-right: 1cm;
+@media only screen
+and (min-device-width : 480px) {
+    body {
+        background-color: #dbdbdb;
+        padding: 1cm;
+    }
+    textarea {
+        white-space: nowrap;
+        display: inline;
+        font-size: 400%;
+    }
+    #sayThis {
+        box-sizing: border-box;
+        width: 90%;
+        padding: 10px;
+        margin-bottom: 5px;
+    }
+    #footer {
+        position: fixed;
+        bottom: 10px;
+        left: 10%;
+        opacity: 0.7;
+    }
+    #footer a {
+        margin-right: 1cm;
+    }
 }
+
+
 
 
 
