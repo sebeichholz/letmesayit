@@ -20,6 +20,7 @@ function sayIt(text) {
         buttonSayIt.disabled=false;
         buttonEdit.disabled=false;
         buttonClear.disabled=false;
+        edit();
     });
     speech.lang = 'en-EN';
     speech.lang = 'de-DE';
