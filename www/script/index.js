@@ -1,7 +1,7 @@
 
 function sayIt(text) {
     if (text.length==0) {
-        edit();
+        editAction();
         return;
     }
     var input =  document.getElementById('sayThis');
