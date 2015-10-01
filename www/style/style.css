@@ -1,18 +1,18 @@
 body {
     background-color: #dbdbdb;
     padding: 1cm;
-    font-size: 400%;
 }
 
-input {
+textarea {
     white-space: nowrap;
     display: inline;
+    font-size: 400%;
 }
 
 #sayThis {
     box-sizing: border-box;
-    width: 80%;
-    padding: 5px;
+    width: 90%;
+    padding: 10px;
     margin-bottom: 5px;
 }
 
@@ -21,7 +21,7 @@ input {
     margin-left: 1cm;
 }
 
-#settings {
+#divSettings {
     position: fixed;
     bottom: 0;
     right: 0;
