@@ -8,9 +8,8 @@
 	<title>Let me say it!</title>
 
 	<!-- Latest compiled and minified CSS -->
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
-	<link rel="stylesheet" href="style.css">
-	<script src="index.js"></script>
+	<link rel="stylesheet" href="style/bootstrap.min.css">
+	<link rel="stylesheet" href="style/style.css">
 
 
 </head>
@@ -23,7 +22,7 @@
 
 <!-- Sprechen: -->
 <button type="button" class="btn btn-success btn-lg"
-		onclick="sayIt(document.getElementById('sayit').value);"
+		onclick="sayIt(document.getElementById('sayThis').value);"
 		id="buttonSayIt"
 		>
 	<span class="glyphicon glyphicon-comment" aria-hidden="true"> Sprechen</span>
@@ -46,6 +45,45 @@
 	<span class="glyphicon glyphicon-remove-circle" aria-hidden="true"> Neu</span>
 </button>
 
+
+<div id="settings">
+	<!-- Settings: -->
+	<button type="button" class="btn btn-default btn-lg"
+			onclick="alert('settings');"
+			id="buttonSettings"
+			>
+		<span class="glyphicon glyphicon glyphicon-cog" aria-hidden="true"></span>
+	</button>
+</div>
+
+
+<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Open Modal</button>
+
+<!-- Modal -->
+<div id="myModal" class="modal fade" role="dialog">
+	<div class="modal-dialog">
+
+		<!-- Modal content-->
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal">&times;</button>
+				<h4 class="modal-title">Modal Header</h4>
+			</div>
+			<div class="modal-body">
+				<p>Some text in the modal.</p>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+			</div>
+		</div>
+
+	</div>
+</div>
+
+
+<script src="script/index.js"></script>
+<script src="script/jquery-2.1.4.min.js"></script>
+<script src="script/bootstrap.min.js"></script>
 
 
 </body>

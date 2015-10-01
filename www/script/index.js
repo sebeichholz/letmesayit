@@ -39,5 +39,5 @@ function edit() {
 
 
 window.onload = function() {
-    var input = document.getElementById("sayThis").focus();
+    document.getElementById("sayThis").focus();
 }

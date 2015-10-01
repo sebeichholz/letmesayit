@@ -21,5 +21,12 @@ input {
     margin-left: 1cm;
 }
 
+#settings {
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    opacity: 0.4;
+}
+
 
 
