@@ -59,5 +59,12 @@ function log(action) {
 }
 
 window.onload = function() {
+    checkSpeechsynthesis();
     document.getElementById("sayThis").focus();
 };
+
+function checkSpeechsynthesis() {
+    if (!Modernizr.speechsynthesis) {
+        window.location = "noSpeech.html";
+    }
+}
