@@ -1,5 +1,9 @@
 
 function sayIt(text) {
+    if (text.length==0) {
+        edit();
+        return;
+    }
     var input =  document.getElementById('sayThis');
     var buttonSayIt = document.getElementById('buttonSayIt');
     var buttonEdit = document.getElementById('buttonEdit');
