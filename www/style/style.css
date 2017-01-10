@@ -1,85 +1,82 @@
 
+body {
+    background-color: #bbbbbb !important;
+}
+
 a {
-    color: #101010;
+    color: #1c3380 !important;
+}
+
+#textarea {
+    width: 100%;
+    margin: 0px;
 }
 
 
-@media only screen
-and (max-device-width : 320px) {
-    body {
-        background-color: #bbbbbb;
-        padding: 2mm;
-    }
-    textarea {
-        white-space: nowrap;
-        display: inline;
-        font-size: 150%;
-    }
-    #sayThis {
-        box-sizing: border-box;
-        width: 98%;
-        padding: 5px;
-        margin-bottom: 3px;
-    }
-
-    #buttonSayIt {
-        margin-right: 2mm;
-    }
-
-    #divSettings {
-        position: fixed;
-        bottom: 0;
-        right: 0;
-        opacity: 0.4;
-    }
-
-    #divButtons {
-
-    }
-
-    #divButtons button {
-        font-size: 80%;
-        padding: 8px;
-    }
-
-    #footer {
-        position: fixed;
-        bottom: 0;
-        left: 5%;
-        opacity: 0.7;
-    }
-
-    #footer a {
-        margin-right: 2mm;
-    }
+#sayThis {
+    box-sizing: border-box;
+    padding: 5px;
+    width: 100%;
+    font-size: 200%;
+    margin: 0px;
+    height: 200px;
 }
 
-@media only screen
-and (min-device-width : 480px) {
-    body {
-        background-color: #dbdbdb;
-        padding: 1cm;
-    }
-    textarea {
-        white-space: nowrap;
-        display: inline;
-        font-size: 400%;
-    }
+#divButtons {
+    background-color: #dddddd;
+}
+#divButtons a {
+    font-size: 13pt;
+    color: white !important;
+    font-weight: bold;
+}
+
+#footer {
+    position: fixed;
+    bottom: 0;
+    left: 5%;
+    opacity: 0.7;
+}
+
+#footer a {
+    margin-right: 2mm;
+}
+
+
+/* Ansicht für Tablets */
+@media screen and (min-width: 38.75em) {
     #sayThis {
         box-sizing: border-box;
-        width: 90%;
         padding: 10px;
-        margin-bottom: 5px;
+        font-size: 400%;
+        height: 300px;
     }
+
     #footer {
         position: fixed;
         bottom: 10px;
         left: 10%;
         opacity: 0.7;
     }
+
     #footer a {
         margin-right: 1cm;
     }
+
+    #divButtons a {
+        font-size: 23pt;
+    }
+
+
+}
+
+/* Ansicht für Desktop-Monitore */
+@media screen and (min-width: 45em) {
+}
+
+@media only screen
+and (min-device-width: 321px) {
+
 }
 
 
