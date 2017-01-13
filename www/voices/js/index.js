@@ -17,8 +17,8 @@ function populateVoiceList() {
     option += ', name=' +  voices[i].name;
     document.getElementById("voices").append(option + "\n");
   }
-    document.getElementById("voiceCount").append(voices.length + ' Stimmen');
-    document.getElementById("userAgent").append(navigator.userAgent);
+    document.getElementById("voiceCount").innerHTML = voices.length + ' Stimmen';
+    document.getElementById("userAgent").innerHTML = navigator.userAgent;
 
 }
 
