@@ -7,7 +7,7 @@ var languageList = {
     'fr': 'Francais',
 };
 
-var localLanguage;
+var localLanguage = 'de';
 
 
 function initLanguages() {

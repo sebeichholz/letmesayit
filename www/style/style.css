@@ -19,7 +19,6 @@ a {
     width: 100%;
     font-size: 200%;
     margin: 0px;
-    height: 150px;
 }
 
 #divButtons {
@@ -49,10 +48,7 @@ a {
 /* Ansicht für Tablets */
 @media screen and (min-width: 38.75em) {
     #sayThis {
-        box-sizing: border-box;
         padding: 10px;
-        font-size: 400%;
-        height: 250px;
     }
 
     #footer a {
@@ -75,6 +71,33 @@ a {
 }
 
 
+/*
+@media screen and (min-height: 42.75em) {
+    #sayThis {
+        height: 300px;
+    }
+}
+*/
+
+@media screen and (min-height: 22.75em) {
+    #sayThis {
+        height: 120px;
+        font-size: 200%;
+    }
+}
+@media screen and (min-height: 32.75em) {
+    #sayThis {
+        height: 150px;
+        font-size: 300%;
+    }
+}
+
+@media screen and (min-height: 42.75em) {
+    #sayThis {
+        height: 250px;
+        font-size: 400%;
+    }
+}
 
 
 
