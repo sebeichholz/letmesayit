@@ -5,14 +5,10 @@ function populateVoiceList() {
 
   voices = speechSynthesis.getVoices();
 
-  for(i = 0; i < voices.length ; i++) {
+  for(var i = 0; i < voices.length ; i++) {
     var option = i + ') ';
     option += voices[i].name + ' (' + voices[i].lang + ')';
     
-    if(voices[i].default) {
-      option += ' -- DEFAULT';
-    }
-
     option += ', lang=' + voices[i].lang;
     option += ', name=' +  voices[i].name;
     document.getElementById("voices").append(option + "\n");
