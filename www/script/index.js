@@ -1,47 +1,61 @@
 var localVoice;
-var localVoices;
-
-var languageList = {
-    'de': 'Deutsch',
-    'en': 'English',
-    'fr': 'Francais',
-};
+var localVoices = new Array();
 
 var localLanguage = 'de';
 
+var count = 0;
+var init = 0;
 
-function initLanguages() {
-    var select = $("#languageList")[0];
-    for (var lang in languageList) {
-        select.add(new Option(languageList[lang], lang));
+function populateVoiceList() {
+    if(typeof speechSynthesis === 'undefined') {
+        return;
     }
+
+    if (init == 1 || localVoices.length > 0) {
+        console.log("already done");
+        return;
+    }
+
+    var voices = speechSynthesis.getVoices();
+
+    count++;
+    console.log('count: ' + count);
+
+    init = 1;
+    for(var i = 0; i < voices.length ; i++) {
+        var v = voices[i];
+        localVoices.push(v);
+
+        var option = document.createElement('option');
+        option.textContent = v.name + ' (' + v.lang + ')';
+
+        option.setAttribute('data-lang', v.lang);
+        option.setAttribute('data-name', v.name);
+        document.getElementById("voiceList").appendChild(option);
+    }
+
+    console.log(voices.length + ' voices added.');
+
+    if (localVoices && localVoices.length>0) {
+        document.getElementById('voiceListContainer').style.display='';
+    }
+    else {
+        document.getElementById('voiceListContainer').style.display='none';
+    }
+
 }
 
-function getVoices() {
-    return new Promise(function (resolve, reject) {
-        speechSynthesis.onvoiceschanged = function (e) {
-            var voices = this.getVoices();
-            if (voices.length > 0)
-                resolve(voices); // Array with Voices
-            else
-                reject(voices); // Empty Array
-        };
-        speechSynthesis.getVoices();
-    });
-}
 
+if (typeof speechSynthesis !== 'undefined' && speechSynthesis.onvoiceschanged !== undefined) {
+    speechSynthesis.onvoiceschanged = populateVoiceList;
+}
 
 function sayIt(text) {
     if (text.length == 0) {
         editAction();
         return;
     }
-    /*
-     var input =  document.getElementById('sayThis');
-     var buttonSayIt = document.getElementById('buttonSayIt');
-     var buttonEdit = document.getElementById('buttonEdit');
-     var buttonClear = document.getElementById('buttonClear');
-     */
+
     var utterance = new SpeechSynthesisUtterance(text);
 
     if (localVoice) {
@@ -73,12 +87,10 @@ function sayIt(text) {
         utterance.lang = 'de';
     }
 
-
-
     utterance.pitch = 1.0;
     utterance.rate = 1;
     window.speechSynthesis.speak(utterance);
-    log('say');
+    log('say' + ((localVoice && typeof localVoice != 'undefined') ? ('&voice=' + localVoice.name + '(' + localVoice.lang + ')') : ''));
 }
 
 
@@ -110,52 +122,28 @@ function log(action) {
 }
 
 
-function initVoices() {
 
-    getVoices().then(function (voices) {
-        var select = $("#voiceList")[0];
-        for (var i = 0; i < voices.length; i++) {
-            console.log(voices[i].lang + ': ' + voices[i].name + ', localService=' + voices[i].localService);
-            select.add(new Option(voices[i].name + ' (' + voices[i].lang + ', localService=' + voices[i].localService + ')', voices[i].name));
-        }
-        localVoices = voices;
-        if (localVoices && localVoices.length>0) {
-            document.getElementById('voiceListContainer').style.display='';
-        }
-        else {
-            document.getElementById('voiceListContainer').style.display='none';
-        }
+function updateVoice(select) {
+    var myoption = select.options[select.selectedIndex];
+    console.log(myoption);
+    var lang = myoption.dataset.lang;
+    var name = myoption.dataset.name;
 
-    }, function (voices) {
-        //$('#result').text(voices);
-    });
-
-}
-
-
-function setActiveVoice(voiceName) {
-    //alert("setActiveVoice: " + voiceName);
-    if (voiceName) {
-
+    console.log('name = ' + name);
+    if (name) {
         localVoice = localVoices.filter(function (voice) {
-            return voice.name == voiceName;
+            return voice.name == name;
         })[0];
-
-    }
-
-}
-
-function setActiveLanguage(langName) {
-    if (langName) {
-        localLanguage = langName;
+    } else {
+        localVoice = null;
     }
 }
+
 
 window.onload = function () {
     checkSpeechsynthesis();
     document.getElementById("sayThis").focus();
-    initVoices();
-    initLanguages();
+    populateVoiceList();
 };
 
 function checkSpeechsynthesis() {
@@ -163,6 +151,13 @@ function checkSpeechsynthesis() {
         window.location = "noSpeech.html";
     }
 }
+
+
+
+
+
+
+
 
 
 

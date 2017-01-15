@@ -78,7 +78,7 @@
 <!-- #####################  Buttons ###################### -->
 <div id="divButtons" class="button-group">
 
-    <a class="large success button" onclick="sayIt(document.getElementById('sayThis').value);">Sprechen</a>
+    <a class="large success button" onclick="sayIt(document.getElementById('sayThis').value);">Sag es</a>
     <a class="large warning button" onclick="edit();">Ändern</a>
     <a class="large alert button" onclick="clearInput();">Neu</a>
 
@@ -86,21 +86,18 @@
 
 
 <div style="width: 100%;">
-        <button style="float: right; margin-right: 1cm;" id="settingsButton" class="hollow secondary small button" href="#"
+        <button style="float: left; margin-left: 1cm;" id="settingsButton" class="hollow secondary small button" href="#"
                 onclick="this.style.fontWeight=this.style.fontWeight=='bold' ? 'normal' : 'bold';document.getElementById('settings').style.display = document.getElementById('settings').style.display === 'none' ? '' : 'none';"
         >Einstellungen</button>
 </div>
 <div style="width: 100%;">
     <form id="settings" style="display: none;">
         <div class="row">
-        <div class="medium-3 columns">
-            <label>Sprache</label>
-            <select id="languageList" onchange="setActiveLanguage(this.value);">
-            </select>
-        </div>
         <div class="medium-6 columns" id="voiceListContainer" style="display: none;">
-            <label>Stimme
-                <select id="voiceList" onchange="setActiveVoice(this.value);">
+            <label><b>Stimme</b>
+                <!--<input style="margin: 0; margin-left: 1cm;" id="filter_voices" value="de" type="checkbox"/> nur deutsche Stimmen-->
+                <select id="voiceList" onchange="updateVoice(this);">
+                    <option data-name="" data-lang="">Standard</option>
                 </select>
             </label>
         </div>
@@ -116,6 +113,7 @@
     </form>
 </div>
 <!-- #####################  Kategorien ###################### -->
+
 
 
 <!-- #####################  Footer ###################### -->
