@@ -11,6 +11,8 @@ Tested with:
 Your browser must support speech synthesis, see here: http://caniuse.com/#feat=speech-synthesis .
 
 
+Automated Tests supported by http://www.Browserstack.com :
+
 ![BrowserStack Status](https://www.browserstack.com/automate/badge.svg?badge_key=TnphcStibUFrWFJEeTU5V29lbGRQb1pQVGFPUjlhR2NVbUI3VEpjMk00MD0tLXVadzIwZmYxemRIaXlwZ1FLaTlqOEE9PQ==--ba15d5d6969102259159aab363c848557e3866f9)
 
 
