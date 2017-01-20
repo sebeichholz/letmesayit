@@ -1,4 +1,6 @@
-
+div {
+    border: 0px solid red;
+}
 body {
     background-color: #bbbbbb !important;
 }
@@ -8,7 +10,6 @@ a {
 }
 
 #textarea {
-    width: 100%;
     margin: 0px;
 }
 
@@ -24,10 +25,22 @@ a {
 #divButtons {
     background-color: #dddddd;
 }
+
+#divButtons div {
+    border: 0px solid orange;
+}
+
 #divButtons a {
-    font-size: 13pt;
+    font-size: 8pt;
+    /*width: 33%;*/
+    width: 60px;
     color: white !important;
     font-weight: bold;
+    border: 0px solid black;
+}
+
+#btnSettings {
+    float: right;
 }
 
 #footer {
@@ -44,6 +57,10 @@ a {
     margin-right: 2mm;
 }
 
+#voicesLengthDebug {
+    font-size: 7pt; color: white;
+}
+
 
 /* Ansicht für Tablets */
 @media screen and (min-width: 38.75em) {
@@ -56,7 +73,8 @@ a {
     }
 
     #divButtons a {
-        font-size: 23pt;
+        font-size: 16pt;
+        width: 110px;
     }
 
     #footer {
@@ -68,35 +86,63 @@ a {
 
 /* Ansicht für Desktop-Monitore */
 @media screen and (min-width: 45em) {
+
 }
 
 
-/*
-@media screen and (min-height: 42.75em) {
-    #sayThis {
-        height: 300px;
-    }
-}
-*/
-
-@media screen and (min-height: 22.75em) {
-    #sayThis {
-        height: 120px;
-        font-size: 200%;
-    }
-}
-@media screen and (min-height: 32.75em) {
+@media screen and (min-height: 17.75em) {
+    /* iphone SE landsape */
     #sayThis {
         height: 150px;
-        font-size: 300%;
+        /*background-color: purple;*/
+    }
+}
+
+@media screen and (min-height: 22.75em) {
+    /* iphone SE */
+    #sayThis {
+        height: 150px;
+        /*background-color: red;*/
+    }
+}
+
+@media screen and (min-height: 32.75em) {
+    /* ipad mini 1 portrait & landscape */
+    /* ipad air 2 portrait & landscape */
+    #divButtons a {
+        font-size: 14pt;
+        width: 100px;
+    }
+    #sayThis {
+        height: 140px;
+        font-size: 200%;
+        /*background-color: yellow;*/
     }
 }
 
 @media screen and (min-height: 42.75em) {
+    /* MacBook Retina  */
     #sayThis {
-        height: 250px;
+        height: 300px;
         font-size: 400%;
+        /*background-color: blue;*/
     }
+}
+
+
+
+[v-cloak] {
+    display: none;
+}
+
+.noselect {
+    -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Chrome/Safari/Opera */
+    -khtml-user-select: none; /* Konqueror */
+    -moz-user-select: none; /* Firefox */
+    -ms-user-select: none; /* Internet Explorer/Edge */
+    user-select: none; /* Non-prefixed version, currently
+                                  not supported by any browser */
 }
 
 

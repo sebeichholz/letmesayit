@@ -5,12 +5,13 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width, user-scalable=no"/>
 
-    <meta property="og:image" content="http://letmesayit.org/site_preview.png" />
-    <meta property="og:image:width" content="1043" />
-    <meta property="og:image:height" content="525" />
+    <meta property="og:image" content="http://letmesayit.org/site_preview.png"/>
+    <meta property="og:image:width" content="1043"/>
+    <meta property="og:image:height" content="525"/>
 
-    <meta property="og:title" content="Let me say it! Your browser speaks for you." />
-    <meta property="og:description" content="Type some text and let your browser do the talking. Very handy for people with speech disabilities. Works on tablets, smart phones and computers." />
+    <meta property="og:title" content="Let me say it! Your browser speaks for you."/>
+    <meta property="og:description"
+          content="Type some text and let your browser do the talking. Very handy for people with speech disabilities. Works on tablets, smart phones and computers."/>
 
     <title>Let me say it! Your browser speaks for you.</title>
 
@@ -56,8 +57,9 @@
     <meta name="msapplication-square310x310logo" content="/_icons/win8-tile-310x310.png">
 
 
-
     <link rel="stylesheet" href="style/style.css">
+    <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
+
 
     <!-- Compressed CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.3.0/css/foundation.min.css">
@@ -66,68 +68,98 @@
 </head>
 <body>
 
+<div id="app">
 
-<section id='result' style="font-size: 10pt;"></section>
-<section id='voicePrint' style="font-size: 10pt;"></section>
-
-
-<div id="textarea">
-    <textarea type="text" id="sayThis" rows="2" placeholder="hier schreiben..."></textarea>
-</div>
-
-<!-- #####################  Buttons ###################### -->
-<div id="divButtons" class="button-group">
-
-    <a class="large success button" onclick="sayIt(document.getElementById('sayThis').value);">Sag es</a>
-    <a class="large warning button" onclick="edit();">Ändern</a>
-    <a class="large alert button" onclick="clearInput();">Neu</a>
-
-</div>
-
-
-<div style="width: 100%;">
-        <button style="float: left; margin-left: 1cm;" id="settingsButton" class="hollow secondary small button" href="#"
-                onclick="this.style.fontWeight=this.style.fontWeight=='bold' ? 'normal' : 'bold';document.getElementById('settings').style.display = document.getElementById('settings').style.display === 'none' ? '' : 'none';"
-        >Einstellungen</button>
-</div>
-<div style="width: 100%;">
-    <form id="settings" style="display: none;">
-        <div class="row">
-        <div class="medium-6 columns" id="voiceListContainer" style="display: none;">
-            <label><b>Stimme</b>
-                <!--<input style="margin: 0; margin-left: 1cm;" id="filter_voices" value="de" type="checkbox"/> nur deutsche Stimmen-->
-                <select id="voiceList" onchange="updateVoice(this);">
-                    <option data-name="" data-lang="">Standard</option>
-                </select>
-            </label>
+<!--
+    <div class="row" style="display: none;">
+        <div class="small-12 medium-12 large-12 columns">
+            <textarea type="text" id="sayThis" v-model="sayThis" rows="2" placeholder="hier schreiben..."></textarea>
         </div>
+        <div class="small-12 wmedium-2 wlarge-1 columns">
+            <div id="divButtonsXX" class="button-group">
+                <a class="large success button noselect" @click="talk()" v-bind:disabled="buttonsDisabled"><i
+                        class="icon-comment-alt icon-3x"></i></a>
+                <a class="large warning button noselect" @click="edit()" v-bind:disabled="buttonsDisabled"><i
+                        class="icon-edit icon-3x"></i></a>
+                <a class="large alert button noselect" @click="clearInput()" v-bind:disabled="buttonsDisabled"><i
+                        class="icon-trash icon-3x"></i></a>
+            </div>
         </div>
-    </form>
+
+    </div>
+-->
+
+
+    <div>
+        <div id="textarea">
+            <textarea v-show="!settingsVisible" type="text" id="sayThis" v-model="sayThis" rows="2" placeholder="hier schreiben..."></textarea>
+        </div>
+
+        <!-- #####################  Buttons ###################### -->
+        <div>
+            <div id="divButtons" class="button-group">
+
+                <a v-show="!settingsVisible" class="large success button noselect" @click="talk()" v-bind:disabled="buttonsDisabled"><i
+                        class="icon-comment-alt icon-3x"></i></a>
+                <a v-show="!settingsVisible" class="large warning button noselect" @click="edit()" v-bind:disabled="buttonsDisabled"><i
+                        class="icon-edit icon-3x"></i></a>
+                <a v-show="!settingsVisible" class="large alert button noselect" @click="clearInput()" v-bind:disabled="buttonsDisabled"><i
+                        class="icon-trash icon-3x"></i></a>
+
+                <a id="btnSettings" class="hollow large button noselect" @click="settings()" v-bind:disabled="buttonsDisabled" v-show="localVoices.length>0"><i
+                        class="icon-cogs icon-3x" ></i></a>
+            </div>
+        </div>
+
+
+    </div>
+    <!--
+    <div v-cloak>activeVoiceName: {{ activeVoiceName }}</div>
+    <span>Selected: {{ xx.length }}</span>
+-->
+
+    <div style="width: 100%;">
+        <form id="settings" v-show="settingsVisible">
+            <div class="row">
+                <div class="medium-6 columns" id="voiceListContainer" v-show="localVoices.length>0">
+                    <label><b>Stimme</b>
+                        <!--<input style="margin: 0; margin-left: 1cm;" id="filter_voices" value="de" type="checkbox"/> nur deutsche Stimmen-->
+                        <select v-model="selectedVoice">
+                            <!--<option value="null">Standard</option>-->
+                            <option v-for="voice in localVoices" v-bind:value="voice.name">
+                                {{ voice.lang + ' ' + voice.name }}
+                            </option>
+                        </select>
+                    </label>
+                </div>
+            </div>
+        </form>
+    </div>
+
+
+
+    <!-- #####################  Kategorien ###################### -->
+
+
+
+
+    <!-- #####################  Footer ###################### -->
+    <div id="footer">
+        <span v-text="localVoices.length" id="voicesLengthDebug"></span>
+        <a href="impressum.html">Impressum</a>
+        <a href="datenschutz.html">Datenschutz</a>
+        <a href="https://github.com/sebeichholz/letmesayit" target="_blank">Source Code</a>
+        <a href="https://www.facebook.com/LetMeSayIt.org/" target="_blank"><img src="_icons/FB-f-Logo__blue_29.png" border="0"/></a>
+    </div>
 
 </div>
 
-
-<div>
-    <form>
-
-    </form>
-</div>
-<!-- #####################  Kategorien ###################### -->
-
-
-
-<!-- #####################  Footer ###################### -->
-<div id="footer">
-    <a href="impressum.html">Impressum</a>
-    <a href="datenschutz.html">Datenschutz</a>
-    <a href="https://github.com/sebeichholz/letmesayit" target="_blank">Source Code</a>
-    <a href="https://www.facebook.com/LetMeSayIt.org/" target="_blank"><img src="_icons/FB-f-Logo__blue_29.png" border="0"/></a>
-</div>
-
-<script src="script/index.js"></script>
-<script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.3.0/js/foundation.min.js"></script>
+<script src="https://unpkg.com/vue/dist/vue.js"></script>
+<!--<script src="https://unpkg.com/vue/dist/vue.min.js"></script>-->
 <script src="script/modernizr-speechsynthesis.js"></script>
+<script src="script/index.js"></script>
+<!--<script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>-->
+<!--<script src="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.3.0/js/foundation.min.js"></script>-->
 
 
 </body>
