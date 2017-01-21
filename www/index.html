@@ -99,11 +99,11 @@
         <div>
             <div id="divButtons" class="button-group">
 
-                <a v-show="!settingsVisible" class="large success button noselect" @click="talk()" v-bind:disabled="buttonsDisabled"><i
+                <a id="btnTalk" v-show="!settingsVisible" class="large success button noselect" @click="talk()" v-bind:disabled="buttonsDisabled"><i
                         class="icon-comment-alt icon-3x"></i></a>
-                <a v-show="!settingsVisible" class="large warning button noselect" @click="edit()" v-bind:disabled="buttonsDisabled"><i
+                <a id="btnEdit" v-show="!settingsVisible" class="large warning button noselect" @click="edit()" v-bind:disabled="buttonsDisabled"><i
                         class="icon-edit icon-3x"></i></a>
-                <a v-show="!settingsVisible" class="large alert button noselect" @click="clearInput()" v-bind:disabled="buttonsDisabled"><i
+                <a id="btnClear" v-show="!settingsVisible" class="large alert button noselect" @click="clearInput()" v-bind:disabled="buttonsDisabled"><i
                         class="icon-trash icon-3x"></i></a>
 
                 <a id="btnSettings" class="hollow large button noselect" @click="settings()" v-bind:disabled="buttonsDisabled" v-show="localVoices.length>0"><i
