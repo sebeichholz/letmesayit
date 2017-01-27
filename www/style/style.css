@@ -2,7 +2,7 @@ div {
     border: 0px solid red;
 }
 body {
-    background-color: #bbbbbb !important;
+    background-color: #dddddd !important;
 }
 
 a {
@@ -13,13 +13,17 @@ a {
     margin: 0px;
 }
 
+#facebook {
+    display: none;
+}
 
 #sayThis {
     box-sizing: border-box;
     padding: 5px;
     width: 100%;
-    font-size: 200%;
+    font-size: 120%;
     margin: 0px;
+    height: 1.5em;
 }
 
 #divButtons {
@@ -31,9 +35,7 @@ a {
 }
 
 #divButtons a {
-    font-size: 8pt;
-    /*width: 33%;*/
-    width: 60px;
+    font-size: 8.5pt;
     color: white !important;
     font-weight: bold;
     border: 0px solid black;
@@ -45,12 +47,12 @@ a {
 
 #footer {
     position: fixed;
-    bottom: 5px;
+    bottom: 2px;
     right: 5px;
     opacity: 0.7;
     text-align: right;
     width: 100%;
-    font-size: 10pt;
+    font-size: 8pt;
 }
 
 #footer a {
@@ -61,9 +63,14 @@ a {
     font-size: 7pt; color: white;
 }
 
+.selected {
+    border: 1px solid red !important;
+}
+
 
 /* Ansicht für Tablets */
 @media screen and (min-width: 38.75em) {
+
     #sayThis {
         padding: 10px;
     }
@@ -72,62 +79,67 @@ a {
         margin-right: 1cm;
     }
 
-    #divButtons a {
-        font-size: 16pt;
-        width: 110px;
-    }
-
     #footer {
         font-size: 14pt;
     }
 
-
-}
-
-/* Ansicht für Desktop-Monitore */
-@media screen and (min-width: 45em) {
-
 }
 
 
-@media screen and (min-height: 17.75em) {
-    /* iphone SE landsape */
-    #sayThis {
-        height: 150px;
-        /*background-color: purple;*/
-    }
-}
+
 
 @media screen and (min-height: 22.75em) {
     /* iphone SE */
     #sayThis {
-        height: 150px;
-        /*background-color: red;*/
+        height: 4.5em;
+        font-size: 150%;
     }
-}
-
-@media screen and (min-height: 32.75em) {
-    /* ipad mini 1 portrait & landscape */
-    /* ipad air 2 portrait & landscape */
     #divButtons a {
-        font-size: 14pt;
-        width: 100px;
+        font-size: 9pt;
     }
-    #sayThis {
-        height: 140px;
-        font-size: 200%;
-        /*background-color: yellow;*/
+    /*
+    body {
+        background-color: purple !important;
     }
+    */
 }
 
-@media screen and (min-height: 42.75em) {
-    /* MacBook Retina  */
+
+@media screen and (min-height: 32.00em) {
+    /* IPad Air landscape */
     #sayThis {
-        height: 300px;
-        font-size: 400%;
-        /*background-color: blue;*/
+        height: 5em;
+        font-size: 180%;
     }
+    #divButtons a {
+        font-size: 11pt;
+    }
+/*
+    body {
+        background-color: blue !important;
+    }
+    */
 }
+
+@media screen and (min-height: 36.00em) {
+    /* IPad Air portrait */
+    #sayThis {
+        height: 5.5em;
+        font-size: 250%;
+    }
+    #divButtons a {
+        font-size: 11pt;
+    }
+    /*
+    body {
+        background-color: green !important;
+    }
+    */
+}
+
+
+
+
 
 
 

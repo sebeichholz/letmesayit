@@ -1,38 +1,38 @@
 /*
-function populateVoiceList() {
+ function populateVoiceList() {
 
-    if(typeof speechSynthesis === 'undefined') {
-        return;
-    }
+ if(typeof speechSynthesis === 'undefined') {
+ return;
+ }
 
-    for(var i = 0; i < voices.length ; i++) {
-        var option = '';
-        option += voices[i].name + ' (' + voices[i].lang + ')';
+ for(var i = 0; i < voices.length ; i++) {
+ var option = '';
+ option += voices[i].name + ' (' + voices[i].lang + ')';
 
-        option += ', lang=' + voices[i].lang;
-        option += ', name=' +  voices[i].name;
-        document.getElementById('voices').innerHTML += (option + "<br/>");
+ option += ', lang=' + voices[i].lang;
+ option += ', name=' +  voices[i].name;
+ document.getElementById('voices').innerHTML += (option + "<br/>");
 
-        if (voices[i].lang.indexOf('de') != -1) {
-            document.getElementById('voices_de').innerHTML += (option + "<br/>");
-        }
+ if (voices[i].lang.indexOf('de') != -1) {
+ document.getElementById('voices_de').innerHTML += (option + "<br/>");
+ }
 
-        if (voices[i].lang.indexOf('en') != -1) {
-            document.getElementById('voices_en').innerHTML += (option + "<br/>");
-        }
+ if (voices[i].lang.indexOf('en') != -1) {
+ document.getElementById('voices_en').innerHTML += (option + "<br/>");
+ }
 
-    }
-    document.getElementById("voiceCount").innerHTML = voices.length + ' Stimmen';
-    document.getElementById("userAgent").innerHTML = navigator.userAgent;
+ }
+ document.getElementById("voiceCount").innerHTML = voices.length + ' Stimmen';
+ document.getElementById("userAgent").innerHTML = navigator.userAgent;
 
-}
+ }
 
-stateChange();
-if (typeof speechSynthesis !== 'undefined' && speechSynthesis.onvoiceschanged !== undefined) {
-    speechSynthesis.onvoiceschanged = populateVoiceList;
-}
+ stateChange();
+ if (typeof speechSynthesis !== 'undefined' && speechSynthesis.onvoiceschanged !== undefined) {
+ speechSynthesis.onvoiceschanged = populateVoiceList;
+ }
 
-*/
+ */
 
 new Vue({
     el: '#app',
@@ -47,7 +47,26 @@ new Vue({
         settingsVisible: false,
         xxx: null,
     },
+    computed: {
+        height: function () {
+            return window.innerHeight;
+        }
+    },
     methods: {
+        isElementInViewport: function (el) {
+            //special bonus for those using jQuery
+            if (typeof jQuery === "function" && el instanceof jQuery) {
+                el = el[0];
+            }
+            var rect = el.getBoundingClientRect();
+            return (
+                rect.top >= 0 &&
+                rect.left >= 0 &&
+                rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) && /*or $(window).height() */
+                rect.right <= (window.innerWidth || document.documentElement.clientWidth) /*or $(window).width() */
+            );
+        },
+
         talk: function () {
             var self = this;
 
@@ -72,7 +91,7 @@ new Vue({
             if (this.selectedVoice && typeof this.selectedVoice != 'undefined') {
                 //console.log('this.selectedVoice = --' + this.selectedVoice + '--');
                 var v = null;
-                for (var i=0; i < this.localVoices.length; i++) {
+                for (var i = 0; i < this.localVoices.length; i++) {
                     if (this.localVoices[i].name === this.selectedVoice) {
                         v = this.localVoices[i];
                     }
@@ -129,7 +148,6 @@ new Vue({
             }, 500);
 
 
-
         },
         populateVoiceListNew: function (voices) {
             this.count++;
@@ -166,12 +184,12 @@ new Vue({
         }
 
     },
-    mounted()
-    {
+    mounted: function () {
         this.checkSpeechsynthesis();
         if (typeof speechSynthesis !== 'undefined' && speechSynthesis.onvoiceschanged !== undefined) {
             speechSynthesis.onvoiceschanged = this.populateVoiceList;
-        };
+        }
+        ;
 
         document.getElementById("sayThis").focus();
 
@@ -179,9 +197,6 @@ new Vue({
 
     },
 
-    computed: {
-
-    }
 })
 
 

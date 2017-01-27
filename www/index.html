@@ -70,26 +70,6 @@
 
 <div id="app">
 
-<!--
-    <div class="row" style="display: none;">
-        <div class="small-12 medium-12 large-12 columns">
-            <textarea type="text" id="sayThis" v-model="sayThis" rows="2" placeholder="hier schreiben..."></textarea>
-        </div>
-        <div class="small-12 wmedium-2 wlarge-1 columns">
-            <div id="divButtonsXX" class="button-group">
-                <a class="large success button noselect" @click="talk()" v-bind:disabled="buttonsDisabled"><i
-                        class="icon-comment-alt icon-3x"></i></a>
-                <a class="large warning button noselect" @click="edit()" v-bind:disabled="buttonsDisabled"><i
-                        class="icon-edit icon-3x"></i></a>
-                <a class="large alert button noselect" @click="clearInput()" v-bind:disabled="buttonsDisabled"><i
-                        class="icon-trash icon-3x"></i></a>
-            </div>
-        </div>
-
-    </div>
--->
-
-
     <div>
         <div id="textarea">
             <textarea v-show="!settingsVisible" type="text" id="sayThis" v-model="sayThis" rows="2" placeholder="hier schreiben..."></textarea>
@@ -106,7 +86,7 @@
                 <a id="btnClear" v-show="!settingsVisible" class="large alert button noselect" @click="clearInput()" v-bind:disabled="buttonsDisabled"><i
                         class="icon-trash icon-3x"></i></a>
 
-                <a id="btnSettings" class="hollow large button noselect" @click="settings()" v-bind:disabled="buttonsDisabled" v-show="localVoices.length>0"><i
+                <a id="btnSettings" class="large button noselect" v-bind:class="{ hollow: !settingsVisible }"  @click="settings()" v-bind:disabled="buttonsDisabled" v-show="localVoices.length>0"><i
                         class="icon-cogs icon-3x" ></i></a>
             </div>
         </div>
@@ -121,10 +101,10 @@
     <div style="width: 100%;">
         <form id="settings" v-show="settingsVisible">
             <div class="row">
-                <div class="medium-6 columns" id="voiceListContainer" v-show="localVoices.length>0">
+                <div class="medium-6 columns" id="voiceListContainer" v-show="localVoices.length>0" style="display: none;">
                     <label><b>Stimme</b>
                         <!--<input style="margin: 0; margin-left: 1cm;" id="filter_voices" value="de" type="checkbox"/> nur deutsche Stimmen-->
-                        <select v-model="selectedVoice">
+                        <select v-model="selectedVoice" id="selectVoice">
                             <!--<option value="null">Standard</option>-->
                             <option v-for="voice in localVoices" v-bind:value="voice.name">
                                 {{ voice.lang + ' ' + voice.name }}
@@ -141,18 +121,19 @@
     <!-- #####################  Kategorien ###################### -->
 
 
-
-
     <!-- #####################  Footer ###################### -->
     <div id="footer">
         <span v-text="localVoices.length" id="voicesLengthDebug"></span>
         <a href="impressum.html">Impressum</a>
         <a href="datenschutz.html">Datenschutz</a>
         <a href="https://github.com/sebeichholz/letmesayit" target="_blank">Source Code</a>
-        <a href="https://www.facebook.com/LetMeSayIt.org/" target="_blank"><img src="_icons/FB-f-Logo__blue_29.png" border="0"/></a>
+        <a href="https://www.facebook.com/LetMeSayIt.org/" target="_blank"><img src="_icons/FB-f-Logo__blue_29.png" border="0" id="facebook"/></a>
     </div>
 
 </div>
+
+<span id="true" data-true="" style="display: none"></span>
+<span id="false" data-false="" style="display: none"></span>
 
 <script src="https://unpkg.com/vue/dist/vue.js"></script>
 <!--<script src="https://unpkg.com/vue/dist/vue.min.js"></script>-->
