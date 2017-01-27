@@ -83,6 +83,10 @@ a {
         font-size: 14pt;
     }
 
+    #facebook {
+        display: inline;
+    }
+
 }
 
 
