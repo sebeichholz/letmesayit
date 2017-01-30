@@ -2,6 +2,7 @@
 // http://nightwatchjs.org/guide#usage
 
 module.exports = {
+  '@disabled': true,
   'default e2e tests': function (browser) {
     // automatically uses dev Server port from /config.index.js
     // default: http://localhost:8080

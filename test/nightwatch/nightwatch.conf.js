@@ -13,8 +13,6 @@ nightwatch -e win81_opera1216,win81_firefox51,win81_chrome55,win7_firefox51
 win10:
 nightwatch -e win10_chrome55,win10_firefox51,win10_ie11,win10_edge14,win10_edge13
 
-
-
  */
 nightwatch_config = {
     "src_folders": ["tests"],
