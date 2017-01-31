@@ -292,6 +292,10 @@ export default {
         height: 5.5em;
         font-size: 250%;
     }
+
+    #sayThis:focus{
+      border: 2px solid orange;
+    }
     #divButtons a {
         font-size: 11pt;
     }
