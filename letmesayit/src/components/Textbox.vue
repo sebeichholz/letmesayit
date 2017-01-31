@@ -187,6 +187,10 @@ export default {
     height: 1.5em;
 }
 
+#sayThis:focus{
+  border: 2px solid orange;
+}
+
 #divButtons {
     background-color: #dddddd;
 }
@@ -293,9 +297,6 @@ export default {
         font-size: 250%;
     }
 
-    #sayThis:focus{
-      border: 2px solid orange;
-    }
     #divButtons a {
         font-size: 11pt;
     }
