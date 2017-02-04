@@ -77,11 +77,15 @@ export default {
               utterance.voice = v;
           }
 
-          this.log('say' + ((utterance.voice && typeof utterance.voice != 'undefined') ? ('&voice=' + utterance.voice.name + '(' + utterance.voice.lang + ')') : ''));
+          var language = this.detectLanguage();
+          this.log('say' + ((utterance.voice && typeof utterance.voice != 'undefined') ? ('&voice=' + utterance.voice.name + '(' + utterance.voice.lang + ')') : '') + '&lang=' + language);
           window.speechSynthesis.speak(utterance);
 
       },
 
+      detectLanguage: function() {
+        return navigator.languages ? navigator.languages[0] : (navigator.language || navigator.userLanguage);
+      },
       edit: function () {
           var input = document.getElementById('sayThis');
           var len = input.value.length * 2;
