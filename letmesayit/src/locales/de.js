@@ -1,3 +1,4 @@
 export default {
-  "typeHere" : "hier schreiben"
+  "typeHere" : "hier schreiben",
+  "voice" : "Stimme_deutsch"
 }

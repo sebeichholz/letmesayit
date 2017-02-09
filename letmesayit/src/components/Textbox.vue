@@ -26,11 +26,33 @@
     </div>
 
 
+    <div style="width: 100%;">
+      <form id="settings" v-show="settingsVisible">
+        <div class="row">
+          <div class="medium-6 columns" id="voiceListContainer" v-show="localVoices.length>0" style="display: none;">
+            <label><b>{{ $t('voice') }}</b>
+              <!--<input style="margin: 0; margin-left: 1cm;" id="filter_voices" value="de" type="checkbox"/> nur deutsche Stimmen-->
+              <select v-model="selectedVoice" id="selectVoice">
+                <!--<option value="null">Standard</option>-->
+                <option v-for="voice in localVoices" v-bind:value="voice.name">
+                  {{ voice.lang + ' ' + voice.name }}
+                </option>
+              </select>
+            </label>
+          </div>
+        </div>
+      </form>
+    </div>
+
+
   </div>
 </template>
 
 <script>
-export default {
+
+
+
+  export default {
   name: 'textbox',
   data () {
     return {
@@ -109,7 +131,7 @@ export default {
       checkSpeechsynthesis: function () {
           if (!Modernizr.speechsynthesis) {
               window.location = "static/noSpeech.html";
-          }
+          };
       },
 
       populateVoiceList: function () {
@@ -164,6 +186,16 @@ export default {
       settings: function () {
           this.settingsVisible = !this.settingsVisible;
       }
+  },
+  mounted: function () {
+    this.checkSpeechsynthesis();
+    if (typeof speechSynthesis !== 'undefined' && speechSynthesis.onvoiceschanged !== undefined) {
+      speechSynthesis.onvoiceschanged = this.populateVoiceList;
+    }
+    document.getElementById("sayThis").focus();
+
+    this.populateVoiceList();
+
   }
 }
 

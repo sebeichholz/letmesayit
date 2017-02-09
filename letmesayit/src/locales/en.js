@@ -1,3 +1,4 @@
 export default {
-  "typeHere" : "type here"
+  "typeHere" : "type here",
+  "voice" : "Voice"
 }
