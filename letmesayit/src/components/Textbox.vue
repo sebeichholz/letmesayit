@@ -2,7 +2,7 @@
   <div>
     <div id="textarea">
       <textarea v-show="!settingsVisible" type="text" id="sayThis" v-model="sayThis" rows="2"
-                placeholder="hier schreiben..."></textarea>
+                v-bind:placeholder="$t('typeHere') + '...'"></textarea>
     </div>
 
     <!-- #####################  Buttons ###################### -->

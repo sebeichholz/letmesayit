@@ -11,7 +11,8 @@
     "test": "npm run e2e"
   },
   "dependencies": {
-    "vue": "^2.1.0"
+    "vue": "^2.1.0",
+    "vue-i18n": "^5.0.0"
   },
   "devDependencies": {
     "autoprefixer": "^6.4.0",
