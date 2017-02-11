@@ -29,6 +29,9 @@
     <div style="width: 100%;">
       <form id="settings" v-show="settingsVisible">
         <div class="row">
+          <div class="medium-6 columns">
+
+          </div>
           <div class="medium-6 columns" id="voiceListContainer" v-show="localVoices.length>0" style="display: none;">
             <label><b>{{ $t('voice') }}:</b>
               <!--<input style="margin: 0; margin-left: 1cm;" id="filter_voices" value="de" type="checkbox"/> nur deutsche Stimmen-->
