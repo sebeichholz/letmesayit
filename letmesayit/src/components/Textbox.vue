@@ -303,7 +303,8 @@
         font-size: 150%;
     }
     #divButtons a {
-        font-size: 9pt;
+        font-size: 10pt;
+        min-width: 5em;
     }
     /*
     body {
@@ -320,7 +321,7 @@
         font-size: 180%;
     }
     #divButtons a {
-        font-size: 11pt;
+        font-size: 13pt;
     }
 /*
     body {
@@ -332,18 +333,28 @@
 @media screen and (min-height: 36.00em) {
     /* IPad Air portrait */
     #sayThis {
-        height: 5.5em;
+        height: 4.5em;
         font-size: 250%;
     }
 
     #divButtons a {
-        font-size: 11pt;
+        font-size: 14pt;
+        min-width: 5em;
     }
     /*
     body {
         background-color: green !important;
     }
     */
+}
+
+@media screen and (min-height: 36.00em) and (orientation: portrait) {
+  /* IPad Air portrait */
+  #sayThis {
+    font-size: 350%;
+    height: 5em;
+  }
+
 }
 
 
