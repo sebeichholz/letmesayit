@@ -1,8 +1,8 @@
 <template>
   <!-- #####################  Footer ###################### -->
   <div id="footer">
-    <a href="impressum.html">Impressum</a>
-    <a href="datenschutz.html">Datenschutz</a>
+    <a href="static/impressum.html">Impressum</a>
+    <a href="static/datenschutz.html">Datenschutz</a>
     <a href="https://github.com/sebeichholz/letmesayit" target="_blank">Source Code</a>
     <a href="https://www.facebook.com/LetMeSayIt.org/" target="_blank"><img src="static/_icons/FB-f-Logo__blue_29.png" border="0" id="facebook"/></a>
   </div>
