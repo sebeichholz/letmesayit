@@ -126,9 +126,9 @@
       },
 
       log: function (action) {
-          var xhr = new XMLHttpRequest();
-          xhr.open('GET', 'static/do.html?action=' + action);
-          xhr.send();
+          //var xhr = new XMLHttpRequest();
+          //xhr.open('GET', 'static/do.html?action=' + action);
+          //xhr.send();
       },
 
       checkSpeechsynthesis: function () {
