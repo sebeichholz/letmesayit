@@ -78,7 +78,7 @@
               return;
           }
 
-          var utterance = new SpeechSynthesisUtterance(this.sayThis);
+          var utterance = new SpeechSynthesisUtterance(this.sayThis.toLowerCase());
 
           utterance.addEventListener('start', function () {
               self.buttonsDisabled = true;
