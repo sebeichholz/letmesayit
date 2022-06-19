@@ -10,18 +10,22 @@
       <div id="divButtons" class="button-group">
 
         <a id="btnTalk" v-show="!settingsVisible" class="large success button noselect" @click="talk()"
-           v-bind:disabled="buttonsDisabled"><i
-          class="icon-comment-alt icon-3x"></i></a>
+           v-bind:disabled="buttonsDisabled">
+           <font-awesome-icon icon="comment" style="font-size:250%"/>
+           </a>
         <a id="btnEdit" v-show="!settingsVisible" class="large warning button noselect" @click="edit()"
-           v-bind:disabled="buttonsDisabled"><i
-          class="icon-edit icon-3x"></i></a>
+           v-bind:disabled="buttonsDisabled">
+           <font-awesome-icon icon="pen-to-square" style="font-size:250%"/>
+           </a>
         <a id="btnClear" v-show="!settingsVisible" class="large alert button noselect" @click="clearInput()"
-           v-bind:disabled="buttonsDisabled"><i
-          class="icon-trash icon-3x"></i></a>
+           v-bind:disabled="buttonsDisabled">
+            <font-awesome-icon icon="trash-can" style="font-size:250%"/>
+           </a>
 
         <a id="btnSettings" class="large button noselect" v-bind:class="{ hollow: !settingsVisible }"
-           @click="settings()" v-bind:disabled="buttonsDisabled" v-show="localVoices.length>0"><i
-          class="icon-cogs icon-3x"></i></a>
+           @click="settings()" v-bind:disabled="buttonsDisabled" v-show="localVoices.length>0">
+            <font-awesome-icon icon="sliders" style="font-size:250%"/>
+           </a>
       </div>
     </div>
 
